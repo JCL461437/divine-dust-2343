@@ -77,7 +77,7 @@ RSpec.describe "flights index" do
       expect(page).to have_content("#{@passenger3.name}")
       expect(page).to_not have_content("Flight Number: #{@flight2.number}")
     end
-
+  
     within "##{@flight2.id}" do
       expect(page).to have_content("Flight Number: #{@flight2.number}")
       expect(page).to have_content("Flight Airline: #{@alaskan.name}")
@@ -88,47 +88,47 @@ RSpec.describe "flights index" do
 
       expect(page).to_not have_content("Flight Number: #{@flight4.number}")
     end
+  end
     
-    it "I see a button next to each passenger name to remove them from the flight " do
-      visit flights_path
+  it "I see a button next to each passenger name to remove them from the flight " do
+    visit flights_path
 
-      within "##{@flight4.id}" do
-        expect(current_path).to eq(flights_path)
+    within "##{@flight4.id}" do
+      expect(current_path).to eq(flights_path)
 
-        expect(page).to have_content("Flight Number: #{@flight4.number}")
-        expect(page).to have_content("Flight Airline: #{@delta.name}")
-        expect(page).to have_content("Flight Passengers:")
-        expect(page).to have_content("#{@passenger3.name}")
-        expect(page).to_not have_content("Flight Number: #{@flight3.number}")
-        
-        within "##{@passenger3.id}" do
-          expect(page).to_not have_content("#{@passenger5.name}")
-          expect(page).to have_content("#{@passenger3.name}")
-          
-          click_button "Remove Passenger"
-        end
-      end
+      expect(page).to have_content("Flight Number: #{@flight4.number}")
+      expect(page).to have_content("Flight Airline: #{@delta.name}")
+      expect(page).to have_content("Flight Passengers:")
+      expect(page).to have_content("#{@passenger3.name}")
+      expect(page).to_not have_content("Flight Number: #{@flight3.number}")
+    end
+    
+    within "##{@passenger3.id}#{@flight4.id}" do
+      expect(page).to_not have_content("#{@passenger5.name}")
+      expect(page).to have_content("#{@passenger3.name}")
+      
+      click_button "Remove Passenger"
+    end
+    
+            
+    within "##{@flight4.id}" do
+      expect(page).to have_content("Flight Number: #{@flight4.number}")
+      expect(page).to have_content("Flight Airline: #{@delta.name}")
+      expect(page).to have_content("Flight Passengers:")
+      expect(page).to_not have_content("#{@passenger3.name}")
+      expect(page).to have_content("#{@passenger4.name}")
+      expect(page).to have_content("#{@passenger5.name}")
+      expect(page).to_not have_content("Flight Number: #{@flight3.number}")
+    end
 
-              
-      within "##{@flight4.id}" do
-        expect(page).to have_content("Flight Number: #{@flight4.number}")
-        expect(page).to have_content("Flight Airline: #{@delta.name}")
-        expect(page).to have_content("Flight Passengers:")
-        expect(page).to_not have_content("#{@passenger3.name}")
-        expect(page).to have_content("#{@passenger4.name}")
-        expect(page).to have_content("#{@passenger5.name}")
-        expect(page).to_not have_content("Flight Number: #{@flight3.number}")
-      end
-
-      within "##{@flight3.id}" do
-        expect(page).to have_content("Flight Number: #{@flight3.number}")
-        expect(page).to have_content("Flight Airline: #{@united.name}")
-        expect(page).to have_content("Flight Passengers:")
-        expect(page).to have_content("#{@passenger1.name}")
-        expect(page).to have_content("#{@passenger2.name}")
-        expect(page).to have_content("#{@passenger3.name}")
-        expect(page).to_not have_content("Flight Number: #{@flight2.number}")
-      end
+    within "##{@flight3.id}" do
+      expect(page).to have_content("Flight Number: #{@flight3.number}")
+      expect(page).to have_content("Flight Airline: #{@united.name}")
+      expect(page).to have_content("Flight Passengers:")
+      expect(page).to have_content("#{@passenger1.name}")
+      expect(page).to have_content("#{@passenger2.name}")
+      expect(page).to have_content("#{@passenger3.name}")
+      expect(page).to_not have_content("Flight Number: #{@flight2.number}")
     end
   end
 end

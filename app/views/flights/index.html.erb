@@ -5,8 +5,8 @@
     <p> Flight Number: <%= flight.number %> | Flight Airline: <%= flight.airline.name %> </p>
     <p> Flight Passengers: </p>
     <% flight.passengers.each do |passenger| %> 
-        <div id="<%=passenger.id%>">
-          p> <%= passenger.name %> <%= button_to 'Remove Passenger', passenger_flight_path, method: :delete, params: {flight_id: flight.id, id: passenger.id} %> </p>
+        <div id="<%=passenger.id%><%=flight.id%>">
+          <p> <%= passenger.name %> <%= button_to 'Remove Passenger', passenger_flight_path(flight.id), method: :delete, params: {flight_id: flight.id, passenger_id: passenger.id} %> </p>
         </div> 
     <% end %>
     <br>
