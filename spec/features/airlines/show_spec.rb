@@ -44,9 +44,15 @@ RSpec.describe "airline show" do
     expect(page).to have_content("Name: #{@passenger2.name}")
     expect(page).to have_content("Name: #{@passenger3.name}")
     expect(page).to have_content("Name: #{@passenger5.name}")
+    expect(page).to have_content("Age: #{@passenger2.age}")
+    expect(page).to have_content("Age: #{@passenger3.age}")
+    expect(page).to have_content("Age: #{@passenger5.age}")
+    expect(page).to have_content("Flight: #{@passenger2.flights}")
+    expect(page).to have_content("Flight: #{@passenger3.flights}")
+    expect(page).to have_content("Flight: #{@passenger5.flights}")
 
     expect(page).to_not have_content("Name: #{@passenger4.name}")
-
-
+    expect(page).to_not have_content("Age: #{@passenger4.age}")
+    expect(page).to_not have_content("Flight: #{@passenger4.flights}")
   end
 end
