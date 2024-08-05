@@ -8,8 +8,8 @@ class Airline < ApplicationRecord
       #    .distinct
 
       Passenger.joins(:flights)
-            .where(flights: { airline_id: id })
-            .where('passengers.age >= 18')
-            .distinct
+         .where(flights: { airline_id: id })
+         .where('passengers.age >= 18')
+         .distinct
    end
 end
