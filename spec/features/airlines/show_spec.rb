@@ -35,8 +35,10 @@ RSpec.describe "airline show" do
     @pass_flight3 = PassengerFlight.create!(passenger: @passenger3, flight: @flight3 )
   end
 
-  it "I see a list of passengers that have flights onthat airline that are adults and are unique " do
+  it "I see a list of passengers that have flights on that airline that are adults and are unique " do
     visit airline_path(@delta)
+
+    
 
   end
 end
