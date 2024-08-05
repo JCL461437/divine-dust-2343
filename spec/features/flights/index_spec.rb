@@ -39,14 +39,13 @@ RSpec.describe "flights index" do
     visit flights_path
 
     expect(current_path).to eq(flights_path)
-
+    save_and_open_page
     expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline #{@delta.name}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger2.name}")
 
     expect(page).to have_content("Flight Number: #{@flight4.number} | Flight Airline #{@delta.name}")
     expect(page).to have_content("Flight Passengers: ")
-    expect(page).to have_content("#{@coupon1.unique_code}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger3.name}")
     expect(page).to have_content("#{@passenger4.name}")
