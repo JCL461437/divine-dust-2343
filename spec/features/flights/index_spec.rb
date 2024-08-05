@@ -41,11 +41,28 @@ RSpec.describe "flights index" do
     expect(current_path).to eq(flights_index_path)
 
     expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline #{@delta.name}")
-    expect(page).to have_content("Coupon Code #{@coupon1.unique_code}")
-    expect(page).to have_content("Dollar off $#{@coupon1.dollar_off*0.01}")
-    expect(page).to have_content("Percent off #{@coupon1.percent_off} %")
-    expect(page).to have_content("Coupon Status: #{@coupon1.status}")
-    expect(page).to have_content("Times Used: #{@coupon1.times_used}")
+    expect(page).to have_content("Flight Passengers: ")
+    expect(page).to have_content("#{@passenger2.name}")
 
+    expect(page).to have_content("Flight Number: #{@flight4.number} | Flight Airline #{@delta.name}")
+    expect(page).to have_content("Flight Passengers: ")
+    expect(page).to have_content("#{@coupon1.unique_code}")
+    expect(page).to have_content("Flight Passengers: ")
+    expect(page).to have_content("#{@passenger3.name}")
+    expect(page).to have_content("#{@passenger4.name}")
+    expect(page).to have_content("#{@passenger5.name}")
+
+    expect(page).to have_content("Flight Number: #{@flight2.number} | Flight Airline #{@alaskan.name}")
+    expect(page).to have_content("Flight Passengers: ")
+    expect(page).to have_content("#{@passenger1.name}")
+    expect(page).to have_content("#{@passenger2.name}")
+    expect(page).to have_content("#{@passenger3.name}")
+
+    expect(page).to have_content("Flight Number: #{@flight3.number} | Flight Airline #{@united.name}")
+    expect(page).to have_content("Flight Passengers: ")
+    expect(page).to have_content("#{@passenger1.name}")
+    expect(page).to have_content("#{@passenger2.name}")
+    expect(page).to have_content("#{@passenger6.name}")
     
   end
+end
