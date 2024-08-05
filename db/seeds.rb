@@ -17,7 +17,7 @@
 #alaskan
 @flight2 = Flight.create!(number: "2", date: "2/4/2024", departure_city: "Seattle", arrival_city: "Anchorage", airline: @alaskan)
 
-@passenger1 = Passenger.create!(name: "Bill", age: 17)
+@passenger1 = Passenger.create!(name: "Bill", age: 32)
 @passenger2 = Passenger.create!(name: "John", age: 18)
 @passenger3 = Passenger.create!(name: "Guy", age: 38)
 @passenger4 = Passenger.create!(name: "Ron", age: 11)
@@ -25,8 +25,8 @@
 @passenger6 = Passenger.create!(name: "Barbara", age: 40)
 
 #delta
-@pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
-@pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight1 )
+@pass_flight11 = PassengerFlight.create!(passenger: @passenger2, flight: @flight4 )
+@pass_flight10 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
 @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight4 )
 @pass_flight8 = PassengerFlight.create!(passenger: @passenger4, flight: @flight4 )
 @pass_flight9 = PassengerFlight.create!(passenger: @passenger5, flight: @flight4 )
