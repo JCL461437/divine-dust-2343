@@ -21,7 +21,8 @@ RSpec.describe "airline show" do
     @passenger6 = Passenger.create!(name: "Barbara", age: 40)
 
     #delta
-    @pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
+    @pass_flight11 = PassengerFlight.create!(passenger: @passenger2, flight: @flight4 )
+    @pass_flight10 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
     @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight4 )
     @pass_flight8 = PassengerFlight.create!(passenger: @passenger4, flight: @flight4 )
     @pass_flight9 = PassengerFlight.create!(passenger: @passenger5, flight: @flight4 )
@@ -41,15 +42,15 @@ RSpec.describe "airline show" do
     expect(page).to have_content("Airline Show: #{@delta.name}")
     expect(page).to have_content("Airline Passengers")
 
-    expect(page).to have_content("Name: #{@passenger2.name}")
-    expect(page).to have_content("Name: #{@passenger3.name}")
-    expect(page).to have_content("Name: #{@passenger5.name}")
-    expect(page).to have_content("Age: #{@passenger2.age}")
-    expect(page).to have_content("Age: #{@passenger3.age}")
-    expect(page).to have_content("Age: #{@passenger5.age}")
-    expect(page).to have_content("Flight: #{@passenger2.flights.name}")
-    expect(page).to have_content("Flight: #{@passenger3.flights.name}")
-    expect(page).to have_content("Flight: #{@passenger5.flights.name}")
+    expect(page).to have_content("Name: #{@passenger2.name}", count: 1) # capybara method
+    expect(page).to have_content("Name: #{@passenger3.name}", count: 1)
+    expect(page).to have_content("Name: #{@passenger5.name}", count: 1)
+    expect(page).to have_content("Age: #{@passenger2.age}", count: 1)
+    expect(page).to have_content("Age: #{@passenger3.age}", count: 1)
+    expect(page).to have_content("Age: #{@passenger5.age}", count: 1)
+    expect(page).to have_content("Flight: #{@passenger2.flights.name}", count: 1)
+    expect(page).to have_content("Flight: #{@passenger3.flights.name}", count: 1)
+    expect(page).to have_content("Flight: #{@passenger5.flights.name}", count: 1)
 
     expect(page).to_not have_content("Name: #{@passenger4.name}")
     expect(page).to_not have_content("Age: #{@passenger4.age}")

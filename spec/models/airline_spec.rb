@@ -21,9 +21,9 @@ RSpec.describe Airline, type: :model do
     @passenger6 = Passenger.create!(name: "Barbara", age: 40)
 
     #delta
-    @pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
+    @pass_flight11 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
     @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight1 )
-    @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight4 )
+    @pass_flight10 = PassengerFlight.create!(passenger: @passenger3, flight: @flight4 )
     @pass_flight8 = PassengerFlight.create!(passenger: @passenger4, flight: @flight4 )
     @pass_flight9 = PassengerFlight.create!(passenger: @passenger5, flight: @flight4 )
     #united
