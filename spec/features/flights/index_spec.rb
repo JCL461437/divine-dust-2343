@@ -26,13 +26,13 @@ RSpec.describe "flights index" do
     @pass_flight8 = PassengerFlight.create!(passenger: @passenger4, flight: @flight4 )
     @pass_flight9 = PassengerFlight.create!(passenger: @passenger5, flight: @flight4 )
     #united
-    @pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight3 )
-    @pass_flight5 = PassengerFlight.create!(passenger: @passenger1, flight: @flight3 )
-    @pass_flight6 = PassengerFlight.create!(passenger: @passenger6, flight: @flight3 )
+    @pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight2 )
+    @pass_flight5 = PassengerFlight.create!(passenger: @passenger1, flight: @flight2 )
+    @pass_flight6 = PassengerFlight.create!(passenger: @passenger6, flight: @flight2 )
     #alaskan
-    @pass_flight1 = PassengerFlight.create!(passenger: @passenger1, flight: @flight2 )
-    @pass_flight2 = PassengerFlight.create!(passenger: @passenger2, flight: @flight2 )
-    @pass_flight3 = PassengerFlight.create!(passenger: @passenger3, flight: @flight2 )
+    @pass_flight1 = PassengerFlight.create!(passenger: @passenger1, flight: @flight3 )
+    @pass_flight2 = PassengerFlight.create!(passenger: @passenger2, flight: @flight3 )
+    @pass_flight3 = PassengerFlight.create!(passenger: @passenger3, flight: @flight3 )
   end
 
   it "I see all flight numbers and next to each number I see the name of the airline and flight passengers " do
@@ -41,33 +41,37 @@ RSpec.describe "flights index" do
     within "##{@flight1.id}" do
       expect(current_path).to eq(flights_path)
       save_and_open_page
-      expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline:  #{@delta.name}")
-      expect(page).to have_content("Flight Passengers: ")
+      expect(page).to have_content("Flight Number: #{@flight1.number}")
+      expect(page).to have_content("Flight Airline: #{@delta.name}")
+      expect(page).to have_content("Flight Passengers:")
       expect(page).to have_content("#{@passenger2.name}")
       expect(page).to_not have_content("Flight Number: #{@flight3.number}")
     end
 
     within "##{@flight4.id}" do
-      expect(page).to have_content("Flight Number: #{@flight4.number} | Flight Airline: #{@delta.name}")
-      expect(page).to have_content("Flight Passengers: ")
+      expect(page).to have_content("Flight Number: #{@flight4.number}")
+      expect(page).to have_content("Flight Airline: #{@delta.name}")
+      expect(page).to have_content("Flight Passengers:")
       expect(page).to have_content("#{@passenger3.name}")
       expect(page).to have_content("#{@passenger4.name}")
       expect(page).to have_content("#{@passenger5.name}")
       expect(page).to_not have_content("Flight Number: #{@flight3.number}")
     end
 
-    wwithin "##{@flight2.id}" do
-      expect(page).to have_content("Flight Number: #{@flight2.number} | Flight Airline: #{@alaskan.name}")
-      expect(page).to have_content("Flight Passengers: ")
+    within "##{@flight3.id}" do
+      expect(page).to have_content("Flight Number: #{@flight3.number}")
+      expect(page).to have_content("Flight Airline: #{@united.name}")
+      expect(page).to have_content("Flight Passengers:")
       expect(page).to have_content("#{@passenger1.name}")
       expect(page).to have_content("#{@passenger2.name}")
       expect(page).to have_content("#{@passenger3.name}")
-      expect(page).to_not have_content("Flight Number: #{@flight3.number}")
+      expect(page).to_not have_content("Flight Number: #{@flight2.number}")
     end
 
-    within "##{@flight3.id}" do
-      expect(page).to have_content("Flight Number: #{@flight3.number} | Flight Airline: #{@united.name}")
-      expect(page).to have_content("Flight Passengers: ")
+    within "##{@flight2.id}" do
+      expect(page).to have_content("Flight Number: #{@flight2.number}")
+      expect(page).to have_content("Flight Airline: #{@alaskan.name}")
+      expect(page).to have_content("Flight Passengers:")
       expect(page).to have_content("#{@passenger1.name}")
       expect(page).to have_content("#{@passenger2.name}")
       expect(page).to have_content("#{@passenger6.name}")
