@@ -16,7 +16,7 @@ RSpec.describe "airline show" do
     @passenger1 = Passenger.create!(name: "Bill", age: 32)
     @passenger2 = Passenger.create!(name: "John", age: 18)
     @passenger3 = Passenger.create!(name: "Guy", age: 38)
-    @passenger4 = Passenger.create!(name: "Ron", age: 71)
+    @passenger4 = Passenger.create!(name: "Ron", age: 11)
     @passenger5 = Passenger.create!(name: "Becky", age: 27)
     @passenger6 = Passenger.create!(name: "Barbara", age: 40)
 
@@ -38,7 +38,15 @@ RSpec.describe "airline show" do
   it "I see a list of passengers that have flights on that airline that are adults and are unique " do
     visit airline_path(@delta)
 
-    
+    expect(page).to have_content("Airline Show: #{@delta.name}")
+    expect(page).to have_content("Airline Passengers")
+
+    expect(page).to have_content("Name: #{@passenger2.name}")
+    expect(page).to have_content("Name: #{@passenger3.name}")
+    expect(page).to have_content("Name: #{@passenger5.name}")
+
+    expect(page).to_not have_content("Name: #{@passenger4.name}")
+
 
   end
 end
