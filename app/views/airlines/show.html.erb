@@ -1,0 +1,8 @@
+<h1> Airline Show: <%= @airline.name %> </h1>
+
+<h2> Airline Passengers </h2>
+<%= @adults_for_airline.each do |adult| %>
+  <p> Name: <%= adult.name %> </p>
+  <p>Age: <%= adult.age %> </p>
+  <p> Flight: <%= adult.flights.name %> </p>
+<% end %>

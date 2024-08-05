@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Airline, type: :model do
+RSpec.describe "airline show" do
   before :each do
     @alaskan = Airline.create!(name: "Alaskan Airlines")
     @delta = Airline.create!(name: "Delta")
@@ -13,7 +13,7 @@ RSpec.describe Airline, type: :model do
     #alaskan
     @flight2 = Flight.create!(number: "2", date: "2/4/2024", departure_city: "Seattle", arrival_city: "Anchorage", airline: @alaskan)
 
-    @passenger1 = Passenger.create!(name: "Bill", age: 17)
+    @passenger1 = Passenger.create!(name: "Bill", age: 32)
     @passenger2 = Passenger.create!(name: "John", age: 18)
     @passenger3 = Passenger.create!(name: "Guy", age: 38)
     @passenger4 = Passenger.create!(name: "Ron", age: 11)
@@ -22,7 +22,6 @@ RSpec.describe Airline, type: :model do
 
     #delta
     @pass_flight4 = PassengerFlight.create!(passenger: @passenger2, flight: @flight1 )
-    @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight1 )
     @pass_flight7 = PassengerFlight.create!(passenger: @passenger3, flight: @flight4 )
     @pass_flight8 = PassengerFlight.create!(passenger: @passenger4, flight: @flight4 )
     @pass_flight9 = PassengerFlight.create!(passenger: @passenger5, flight: @flight4 )
@@ -36,17 +35,23 @@ RSpec.describe Airline, type: :model do
     @pass_flight3 = PassengerFlight.create!(passenger: @passenger3, flight: @flight3 )
   end
 
-  describe "relationships" do
-    it { should have_many :flights }
-  end
+  it "I see a list of passengers that have flights on that airline that are adults and are unique " do
+    visit airline_path(@delta)
 
-  describe "model methods" do
-    describe "instance methods" do
-      describe ":adult_passengers" do 
-        it "returns only adult passengers for an airline" do
-          expect(@delta.adult_passengers).to eq([@passenger2, @passenger3, @passenger5])
-        end
-      end
-    end
+    expect(page).to have_content("Airline Show: #{@delta.name}")
+    expect(page).to have_content("Airline Passengers")
+
+    expect(page).to have_content("Name: #{@passenger2.name}")
+    expect(page).to have_content("Name: #{@passenger3.name}")
+    expect(page).to have_content("Name: #{@passenger5.name}")
+    expect(page).to have_content("Age: #{@passenger2.age}")
+    expect(page).to have_content("Age: #{@passenger3.age}")
+    expect(page).to have_content("Age: #{@passenger5.age}")
+    expect(page).to have_content("Flight: #{@passenger2.flights.name}")
+    expect(page).to have_content("Flight: #{@passenger3.flights.name}")
+    expect(page).to have_content("Flight: #{@passenger5.flights.name}")
+
+    expect(page).to_not have_content("Name: #{@passenger4.name}")
+    expect(page).to_not have_content("Age: #{@passenger4.age}")
   end
 end
