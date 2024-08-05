@@ -38,4 +38,14 @@ RSpec.describe Airline, type: :model do
   describe "relationships" do
     it { should have_many :flights }
   end
+
+  describe "model methods" do
+    describe "instance methods" do
+      describe ":adult_passengers" do 
+        it "returns only adult passengers for an airline" do
+          expect(@delta.adult_passengers).to eq([@passenger2, @passenger3, @passenger5])
+        end
+      end
+    end
+  end
 end
