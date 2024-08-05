@@ -36,9 +36,9 @@ RSpec.describe "flights index" do
   end
 
   it "I see all flight numbers and next to each number I see the name of the airline and flight passengers " do
-    visit flights_index_path
+    visit flights_path
 
-    expect(current_path).to eq(flights_index_path)
+    expect(current_path).to eq(flights_path)
 
     expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline #{@delta.name}")
     expect(page).to have_content("Flight Passengers: ")
