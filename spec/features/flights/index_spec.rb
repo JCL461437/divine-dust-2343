@@ -40,24 +40,24 @@ RSpec.describe "flights index" do
 
     expect(current_path).to eq(flights_path)
     save_and_open_page
-    expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline #{@delta.name}")
+    expect(page).to have_content("Flight Number: #{@flight1.number} | Flight Airline:  #{@delta.name}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger2.name}")
 
-    expect(page).to have_content("Flight Number: #{@flight4.number} | Flight Airline #{@delta.name}")
+    expect(page).to have_content("Flight Number: #{@flight4.number} | Flight Airline: #{@delta.name}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger3.name}")
     expect(page).to have_content("#{@passenger4.name}")
     expect(page).to have_content("#{@passenger5.name}")
 
-    expect(page).to have_content("Flight Number: #{@flight2.number} | Flight Airline #{@alaskan.name}")
+    expect(page).to have_content("Flight Number: #{@flight2.number} | Flight Airline: #{@alaskan.name}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger1.name}")
     expect(page).to have_content("#{@passenger2.name}")
     expect(page).to have_content("#{@passenger3.name}")
 
-    expect(page).to have_content("Flight Number: #{@flight3.number} | Flight Airline #{@united.name}")
+    expect(page).to have_content("Flight Number: #{@flight3.number} | Flight Airline: #{@united.name}")
     expect(page).to have_content("Flight Passengers: ")
     expect(page).to have_content("#{@passenger1.name}")
     expect(page).to have_content("#{@passenger2.name}")
