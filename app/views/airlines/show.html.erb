@@ -4,5 +4,5 @@
 <%= @adults_for_airline.each do |adult| %>
   <p> Name: <%= adult.name %> </p>
   <p>Age: <%= adult.age %> </p>
-  <p> Flight: <%= adult.flights %> </p>
+  <p> Flight: <%= adult.flights.name %> </p>
 <% end %>
