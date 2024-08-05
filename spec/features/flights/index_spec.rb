@@ -79,5 +79,8 @@ RSpec.describe "flights index" do
       expect(page).to_not have_content("Flight Number: #{@flight4.number}")
     end
     
+    it "I see a button next to each passenger name to remove them from the flight " do
+      visit flights_path
+    end
   end
 end
