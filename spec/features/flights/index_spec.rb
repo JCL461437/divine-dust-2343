@@ -40,7 +40,7 @@ RSpec.describe "flights index" do
 
     within "##{@flight1.id}" do
       expect(current_path).to eq(flights_path)
-      save_and_open_page
+
       expect(page).to have_content("Flight Number: #{@flight1.number}")
       expect(page).to have_content("Flight Airline: #{@delta.name}")
       expect(page).to have_content("Flight Passengers:")
